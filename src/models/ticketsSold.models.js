@@ -21,7 +21,7 @@ const Sold = db.define('sold', {
         field: "sorteo_id"
     },
     numeroTickets:{
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         field: "numero_ticket"
     }
 });

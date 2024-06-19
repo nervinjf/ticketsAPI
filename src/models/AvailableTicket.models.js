@@ -3,15 +3,24 @@ const { DataTypes, BOOLEAN } = require("sequelize");
 const bcrypt = require("bcrypt");
 
 const AvailableTicket = db.define('availableticket', {
-    ticketNumber: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        field: "ticket_number"
-      },
-      sorteosId: {
-        type: DataTypes.INTEGER,
-        field: "sorteos_id"
-      }
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
+  ticketNumber: {
+    type: DataTypes.INTEGER,
+    field: "ticket_number"
+  },
+  sorteoId: {
+    type: DataTypes.INTEGER,
+    field: "sorteo_id"
+  },
+  ticket: {
+    type: DataTypes.STRING,
+
+  },
 });
 
 module.exports = AvailableTicket;

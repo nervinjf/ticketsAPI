@@ -1,3 +1,4 @@
+const uploadToFTP = require('../function/functionFTP');
 const { Sorteos } = require('../models');
 const available_tickets = require('./function/AvailableTickets/AvailableTickets')
 
@@ -21,6 +22,16 @@ class SorteosServices {
             return result;
         } catch (error) {
             throw error;
+        }
+    }
+
+    static async uploadToFTP(file){
+        try {
+            
+            const link = uploadToFTP(file)
+            return link;
+        } catch (error) {
+            throw error
         }
     }
     

@@ -1,8 +1,8 @@
 const { userRegister, getAllUsers } = require("./users.controllers");
 const { adminRegister, getAllAdmin } = require("./admin.controllers");
 const { userLogin } = require("./auth.controllers");
-const { compradoresRegister, getAllCompradores } = require("./compradores.controllers");
-const { sorteosRegister,getAllSorteos } = require("./sorteos.controllers");
+const { compradoresRegister, getAllCompradores, compradoresUpdate } = require("./compradores.controllers");
+const { sorteosRegister,getAllSorteos, uploadFile } = require("./sorteos.controllers");
 
 module.exports = {
     userRegister, 
@@ -12,6 +12,8 @@ module.exports = {
     getAllAdmin,
     compradoresRegister,
     getAllCompradores,
+    compradoresUpdate,
     sorteosRegister,
     getAllSorteos,
+    uploadFile
 };

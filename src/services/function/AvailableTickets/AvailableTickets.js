@@ -4,8 +4,9 @@ const available_tickets = async (id) => {
     try {
         console.log(id)
         const tickets = [];
-        for (let i = 1; i <= 5; i++) {
-            tickets.push({ ticketNumber: i, sorteosId: id });
+        for (let i = 1; i <= 9999; i++) {
+            const ticketNumber = i.toString().padStart(4, '0');
+            tickets.push({ ticketNumber: i, sorteoId: id, ticket: ticketNumber });
         }
         console.log(tickets)
 

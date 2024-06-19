@@ -27,7 +27,26 @@ const getAllSorteos = async (req, res, next) => {
     }
 }
 
+async function uploadFile(req, res, next) {
+    if (!req.file) {
+      return res.status(400).send('No se subió ningún archivo.');
+    }
+  
+    try {
+      const imageUrl = await SorteosServices.uploadToFTP(req.file);
+      console.log(imageUrl)
+      res.json({ message: 'Archivo subido exitosamente', url: imageUrl });
+    } catch (err) {
+        next({
+            status: 500,
+            errorContent: err,
+            message: "Hubo un error subiendo la imagen."
+        })
+    }
+  }
+
 module.exports = {
     sorteosRegister,
     getAllSorteos,
+    uploadFile
 }

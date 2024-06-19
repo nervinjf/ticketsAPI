@@ -3,7 +3,7 @@ const transporter = require("../../../utils/mailer");
 const EnvioDeTickets = async (tickets, cantidadTickets) => {
 
     await transporter.sendMail({
-        from: '<nervinjflores@gmail.com>',
+        from: '<no-reply@lotoeureka.com>',
         to: '<nervinjflores@gmail.com>',
         subject: `Recibo compra tickets`,
         text: `Buenas tardes usted compro ${cantidadTickets} tickets y tienen estos numeros ${tickets}`,
@@ -14,6 +14,8 @@ const EnvioDeTickets = async (tickets, cantidadTickets) => {
         //     },
         // ],
     });
+
+    return console.log('envio efectivo');
 }
 
 module.exports = EnvioDeTickets;

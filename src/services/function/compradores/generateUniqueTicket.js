@@ -8,10 +8,12 @@ const generateUniqueTicket = async (userId, sorteoId) => {
     try {
         
         const availableTicket = await AvailableTicket.findOne({
-            where: {sorteosId: sorteoId},
+            where: {sorteoId: sorteoId},
             order: sequelize.random(),
             transaction
         })
+
+        console.log(availableTicket.id)
 
         if(!availableTicket){
             throw new Error('No quedan tickets disponibles');
@@ -19,14 +21,14 @@ const generateUniqueTicket = async (userId, sorteoId) => {
 
         // Mueve el ticket a la tabla de compras
 
-        const data = {"userId": userId, "sorteoId": sorteoId, "numeroTickets": availableTicket.ticketNumber}
+        const data = {"userId": userId, "sorteoId": sorteoId, "numeroTickets": availableTicket.ticket}
 
         const newTicket = await Sold.create(data, {transaction});
 
 
         // Elimina el ticket de la tabla de AvailableTicket
 
-        await AvailableTicket.destroy({where: {ticketNumber: availableTicket.ticketNumber}}, {transaction});
+        await AvailableTicket.destroy({where: {id: availableTicket.id}}, {transaction});
 
         await transaction.commit();
         return newTicket.numeroTickets

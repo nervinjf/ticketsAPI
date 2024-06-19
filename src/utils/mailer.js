@@ -3,17 +3,17 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: "lotoeureka.com",
   port: 465,
   secure: true,
   auth: {
-    user: "nervinjflores@gmail.com",
+    user: "no-reply@lotoeureka.com",
     pass: process.env.G_PASSWORD,
   },
-  // tls: {
-  //   // do not fail on invalid certs
-  //   rejectUnauthorized: false,
-  // },
+  tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: false,
+  },
 });
 
 module.exports = transporter;
